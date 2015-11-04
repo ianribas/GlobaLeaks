@@ -9,15 +9,57 @@
   <body>
     <div id="mocha"></div>
 
-    <!-- libs -->
-    <script src="loader.js"></script>
-    <script src="lib/chai.js"></script>
+    <!-- test libs -->
     <script src="lib/mocha.js"></script>
+    <script src="lib/chai.js"></script>
+    <script src="../../app/components/sinon-chai/lib/sinon-chai.js"></script>
+    <script src="../../app/components/sinon-1.17.2/index.js"></script>
     <script>
         mocha.setup('bdd');
         mocha.timeout(20000);
     </script>
+
+    <!-- application libs -->
+    <script src="../../app/components/angular/angular.js"></script>
+    <script src="../../app/components/angular-mocks/angular-mocks.js"></script>
+    <script src="../../app/components/angular-route/angular-route.js"></script>
+    <script src="../../app/components/angular-resource/angular-resource.js"></script>
+
+    <!-- application code -->
+    <script src="../../app/scripts/app.js"></script>
+    <script src="../../app/scripts/browserchecks.js"></script>
+    <script src="../../app/scripts/controllers/admin/contexts.js"></script>
+    <script src="../../app/scripts/controllers/admin/fields.js"></script>
+    <script src="../../app/scripts/controllers/admin/main.js"></script>
+    <script src="../../app/scripts/controllers/admin/overview.js"></script>
+    <script src="../../app/scripts/controllers/admin/receivers.js"></script>
+    <script src="../../app/scripts/controllers/admin/stats.js"></script>
+    <script src="../../app/scripts/controllers/admin/steps.js"></script>
+    <script src="../../app/scripts/controllers/admin/users.js"></script>
+    <script src="../../app/scripts/controllers/custodian.js"></script>
+    <script src="../../app/scripts/controllers/fileupload.js"></script>
+    <script src="../../app/scripts/controllers/home.js"></script>
+    <script src="../../app/scripts/controllers/login.js"></script>
+    <script src="../../app/scripts/controllers/main.js"></script>
+    <script src="../../app/scripts/controllers/preferences.js"></script>
+    <script src="../../app/scripts/controllers/receipt.js"></script>
+    <script src="../../app/scripts/controllers/receiver.js"></script>
+    <script src="../../app/scripts/controllers/submission.js"></script>
+    <script src="../../app/scripts/controllers/tip.js"></script>
+    <script src="../../app/scripts/controllers/user.js"></script>
+    <script src="../../app/scripts/controllers/wizard.js"></script>
+    <script src="../../app/scripts/crypto/openpgp.min.js"></script>
+    <script src="../../app/scripts/crypto/scrypt-async.min.js"></script>
+    <script src="../../app/scripts/directives.js"></script>
+    <script src="../../app/scripts/filters.js"></script>
+    <script src="../../app/scripts/services.js"></script>
+    <script src="../../app/scripts/templates.js"></script>
+
+    <!-- unit tests-->
     <script src="unittests.js"></script>
+    <script src="../../tests/specs/services/authentication.spec.js"></script>
+
+    <!-- test runner-->
     <script>
         if (window.mochaPhantomJS) {
           mochaPhantomJS.run();

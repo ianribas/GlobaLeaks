@@ -276,45 +276,6 @@ module.exports = function(grunt) {
           }
         }
       }
-    },
-
-    karma: {
-      options: {
-        frameworks: ['mocha', 'sinon-chai'],
-        colors: true,
-        singleRun: false,
-        browsers: ['PhantomJS'],
-        reporters: ['progress', 'coverage'],
-        preprocessors: {
-          'app/scripts/**/*.js': ['coverage']
-        },
-        coverageReporter: {
-          dir: 'coverage/',
-          retporters: [
-            { type: 'html', subdir: 'report-html' },
-            { type: 'text-summary' }
-          ]
-        },
-        files: [
-          'app/components/angular/angular.js',
-          'app/components/angular-mocks/angular-mocks.js',
-          'app/components/angular-route/angular-route.js',
-          'app/components/angular-resource/angular-resource.js',
-          'app/scripts/**/*.js',
-          'tests/specs/**/*.spec.js'
-        ],
-        exclude: [
-          'app/scripts/**/*worker.js',
-          'app/scripts/**/*worker.min.js'
-        ]
-      },
-      dev: {
-        singleRun: false,
-        retporters: 'dots'
-      },
-      ci: {
-        singleRun: true,
-      }
     }
 
   });
@@ -343,7 +304,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-saucelabs');
-  grunt.loadNpmTasks('grunt-karma');
 
   var readDynamicStrings = function() {
     var filecontent = grunt.file.read('app/data/dynamic_strings.json'),

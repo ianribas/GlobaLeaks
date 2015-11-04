@@ -1,5 +1,7 @@
 "use strict";
 
+var expect = chai.expect;
+
 describe('Authentication service', function() {
 
   var Authentication, $httpBackend, rootScope, $location, ReceiverTips;
