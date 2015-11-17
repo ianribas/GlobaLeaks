@@ -14,14 +14,28 @@ exports.config = {
     'tests/end2end/test-admin-configure-users.js',
     'tests/end2end/test-admin-configure-contexts.js',
     'tests/end2end/test-receiver-first-login.js',
-    'tests/end2end/test-globaleaks-process.js'
+    'tests/end2end/test-globaleaks-process.js',
+    'tests/end2end/test-admin-stats.js',
+    'tests/end2end/test-admin-submission-overview.js',
   ],
 
   capabilities: {
-    'browserName': 'firefox'
+    'browserName': 'chrome'
   },
 
   jasmineNodeOpts: {
    isVerbose: true,
+  },
+
+  plugins: [{
+      path: '../../node_modules/protractor/plugins/console',
+      failOnWarning: false,
+      failOnError: true
+  }],
+
+  onPrepare: function() {
+     var SpecReporter = require('jasmine-spec-reporter');
+     // add jasmine spec reporter
+     jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
   }
 };

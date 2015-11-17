@@ -177,7 +177,7 @@ module.exports = function(grunt) {
     },
     protractor_coverage: {
       options: {
-        keepAlive: true,
+        keepAlive: false,
         noColor: false,
         coverageDir: 'coverage'
       },

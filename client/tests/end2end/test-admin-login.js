@@ -1,14 +1,22 @@
-var utils = require('./utils.js');
+//var utils = require('./utils.js');
+var adminLoginHelper = require('./helpers/admin-login-helper')
 
 describe('admin login', function() {
+  beforeAll(function() {
+    adminLoginHelper.forceLogin();
+  });
+
   it('should login as admin', function() {
-    browser.get('/#/admin');
+    expect(browser.getLocationAbsUrl()).toContain('/admin/landing');
+  });
 
-    element(by.model('loginUsername')).sendKeys('admin');
-    element(by.model('loginPassword')).sendKeys('ACollectionOfDiplomaticHistorySince_1966_ToThe_Pr esentDay#');
+  it('should go to landing page if already logged in', function() {
 
-    element(by.xpath('//button[contains(., "Log in")]')).click().then(function() {
-      utils.waitForUrl('/admin/landing');
-    });
+    browser.setLocation('/admin');
+
+    // element(by.xpath('//button[contains(., "Log in")]')).click().then(function() {
+    //   utils.waitForUrl('/admin/landing');
+    // });
+    expect(browser.getLocationAbsUrl()).toContain('/admin/landing');
   });
 });
