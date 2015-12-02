@@ -19,8 +19,11 @@ exports.config = {
     'test-admin-configure-node.js',
     'test-admin-configure-users.js',
     'test-admin-configure-contexts.js',
+    'test-admin-configure-receivers.js',
     'test-receiver-first-login.js',
-    'test-globaleaks-process.js'
+    'test-globaleaks-process.js',
+    'test-admin-stats.js',
+    'test-admin-submission-overview.js'
   ],
 
   jasmineNodeOpts: {

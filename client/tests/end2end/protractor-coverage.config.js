@@ -13,10 +13,11 @@ exports.config = {
     'tests/end2end/test-admin-configure-node.js',
     'tests/end2end/test-admin-configure-users.js',
     'tests/end2end/test-admin-configure-contexts.js',
+    'tests/end2end/test-admin-configure-receivers.js',
     'tests/end2end/test-receiver-first-login.js',
     'tests/end2end/test-globaleaks-process.js',
     'tests/end2end/test-admin-stats.js',
-    'tests/end2end/test-admin-submission-overview.js',
+    'tests/end2end/test-admin-submission-overview.js'
   ],
 
   capabilities: {
@@ -28,9 +29,11 @@ exports.config = {
   },
 
   plugins: [{
-      path: '../../node_modules/protractor/plugins/console',
+      package: 'protractor-console-plugin',
+      logWarnings: true,
       failOnWarning: false,
-      failOnError: true
+      failOnError: true,
+      exclude: ['favicon.ico', 'glyphicons-halflings-regular']
   }],
 
   onPrepare: function() {
