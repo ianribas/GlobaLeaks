@@ -104,6 +104,7 @@ elif [[ $GLTEST =~ ^end2end-.* ]]; then
   $TRAVIS_BUILD_DIR/backend/bin/globaleaks -z travis --port 9000 --disable-mail-torification
   sleep 3
   cd $TRAVIS_BUILD_DIR/client
+  ./node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update
   grunt protractor:saucelabs
 
 fi
