@@ -36,9 +36,9 @@ exports.config = {
       exclude: ['favicon.ico', 'glyphicons-halflings-regular']
   }],
 
-  onPrepare: function() {
-     var SpecReporter = require('jasmine-spec-reporter');
-     // add jasmine spec reporter
-     jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
-  }
+  // onPrepare: function() {
+  //    var SpecReporter = require('jasmine-spec-reporter');
+  //    // add jasmine spec reporter
+  //    jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
+  // }
 };
