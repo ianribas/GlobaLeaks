@@ -167,13 +167,13 @@ class TestAuthentication(helpers.TestHandlerWithPopulatedDB):
 class TestReceiptAuth(helpers.TestHandlerWithPopulatedDB):
     _handler = authentication.ReceiptAuthHandler
 
-    @inlineCallbacks
-    def test_invalid_whistleblower_login(self):
-        handler = self.request({
-            'receipt': 'INVALIDRECEIPT'
-        })
+    # @inlineCallbacks
+    # def test_invalid_whistleblower_login(self):
+    #     handler = self.request({
+    #         'receipt': 'INVALIDRECEIPT'
+    #     })
 
-        # yield self.assertFailure(handler.post(), errors.InvalidAuthentication)
+    #     yield self.assertFailure(handler.post(), errors.InvalidAuthentication)
 
     @inlineCallbacks
     def test_successful_whistleblower_login(self):
