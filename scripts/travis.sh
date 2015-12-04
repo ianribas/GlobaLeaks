@@ -7,6 +7,9 @@ setupClientDependencies()
   cd $TRAVIS_BUILD_DIR/client  # to install frontend dependencies
   npm install -g grunt grunt-cli bower
   npm install
+  for webdrivermanager in ./node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager ./node_modules/grunt-protractor-coverage/node_modules/protractor/bin/webdriver-manager ./node_modules/protractor/bin/webdriver-manager
+  do [ -x $webdrivermanager ] && $webdrivermanager update
+  done
   grunt setupDependencies
   grunt build
 }
@@ -38,7 +41,6 @@ if [ "$GLTEST" = "unit" ]; then
   echo "Running BrowserTesting locally collecting code coverage"
   cd $TRAVIS_BUILD_DIR/client
   rm -fr $TRAVIS_BUILD_DIR/client/coverage
-  ./node_modules/protractor/bin/webdriver-manager update
 
   $TRAVIS_BUILD_DIR/backend/bin/globaleaks -z travis -c -k9 --disable-mail-notification
   sleep 5
@@ -69,7 +71,6 @@ elif [ "$GLTEST" = "build_and_install" ]; then
   sleep 5
   setupClientDependencies
   cd $TRAVIS_BUILD_DIR/client
-  ./node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update
   grunt protractor:test
 
 elif [[ $GLTEST =~ ^end2end-.* ]]; then
@@ -104,7 +105,6 @@ elif [[ $GLTEST =~ ^end2end-.* ]]; then
   $TRAVIS_BUILD_DIR/backend/bin/globaleaks -z travis --port 9000 --disable-mail-torification
   sleep 3
   cd $TRAVIS_BUILD_DIR/client
-  ./node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update
   grunt protractor:saucelabs
 
 fi
