@@ -21,19 +21,22 @@ exports.config = {
   ],
 
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    'chromeOptions': {
+      'args': ['no-sandbox']
+    }
   },
 
   jasmineNodeOpts: {
-   isVerbose: true
+    isVerbose: true
   },
 
   plugins: [{
-      package: 'protractor-console-plugin',
-      logWarnings: true,
-      failOnWarning: false,
-      failOnError: true,
-      exclude: ['favicon.ico', 'glyphicons-halflings-regular']
+    package: 'protractor-console-plugin',
+    logWarnings: true,
+    failOnWarning: false,
+    failOnError: true,
+    exclude: ['favicon.ico', 'glyphicons-halflings-regular']
   }],
 
   // onPrepare: function() {
