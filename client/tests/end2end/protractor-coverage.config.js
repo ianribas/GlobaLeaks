@@ -45,3 +45,7 @@ exports.config = {
   //    jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
   // }
 };
+
+if (process.env.CHROME_BINARY_PATH) {
+  exports.config.capabilities.chromeOptions.binary = process.env.CHROME_BINARY_PATH;
+}
