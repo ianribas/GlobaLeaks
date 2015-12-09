@@ -135,6 +135,6 @@ install:
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - [ "$GLTEST" = "unit" ] && cd $TRAVIS_BUILD_DIR && curl -Lo chrome.zip https://download-chromium.appspot.com/dl/Linux_x64 && unzip chrome.zip
+  - "[ \"$GLTEST\" = \"unit\" ] && cd $TRAVIS_BUILD_DIR && curl -Lo chrome.zip https://download-chromium.appspot.com/dl/Linux_x64 && unzip chrome.zip"
 script:
   - $TRAVIS_BUILD_DIR/scripts/travis.sh
