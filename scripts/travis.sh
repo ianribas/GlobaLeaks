@@ -39,6 +39,10 @@ if [ "$GLTEST" = "unit" ]; then
   $TRAVIS_BUILD_DIR/client/node_modules/mocha/bin/mocha -R list $TRAVIS_BUILD_DIR/client/tests/api/test_00* --timeout 30000
 
   echo "Running BrowserTesting locally collecting code coverage"
+  export DISPLAY=:99.0
+  sh -e /etc/init.d/xvfb start
+  cd $TRAVIS_BUILD_DIR && curl -Lo chrome.zip https://download-chromium.appspot.com/dl/Linux_x64 && unzip chrome.zip
+
   cd $TRAVIS_BUILD_DIR/client
   rm -fr $TRAVIS_BUILD_DIR/client/coverage
 
