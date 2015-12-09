@@ -14,6 +14,7 @@ exports.config = {
     'test-admin-configure-users.js',
     'test-admin-configure-contexts.js',
     'test-admin-configure-receivers.js',
+    'test-admin-preferences.js',
     'test-receiver-first-login.js',
     'test-globaleaks-process.js',
     'test-admin-stats.js',
@@ -25,6 +26,8 @@ exports.config = {
   },
 
   jasmineNodeOpts: {
-   isVerbose: true,
+    showColors: true,
+    isVerbose: true,
+    defaultTimeoutInterval : 60000
   }
 };

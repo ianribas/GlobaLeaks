@@ -53,7 +53,8 @@ module.exports = function(grunt) {
             src: [
               '**',
               '!js/**/*.js', // Don't copy scripts that will be instrumented.
-              'js/crypto/**/*.js' // Copy scripts that should not be instrumented.
+              'js/crypto/**/*.js', // Copy scripts that should not be instrumented.
+              'components/bootstrap/dist/fonts' // Copy bootstrap fonts to the right place.
             ],
             expand: true
           }]

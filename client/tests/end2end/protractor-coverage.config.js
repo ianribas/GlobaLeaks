@@ -1,51 +1,39 @@
-exports.config = {
-  framework: 'jasmine2',
+var config = require('./protractor.config.js').config;
 
-  baseUrl: 'http://127.0.0.1:8082/',
+// Still no quite sure why protractor coverage needs this, but ...
+config.specs = config.specs.map(function(specfile) {
+  return "tests/end2end/" + specfile;
+});
 
-  troubleshoot: true,
-  directConnect: true,
+config.troubleshoot = true;
+config.directConnect = true;
 
-  specs: [
-    'tests/end2end/test-init.js',
-    'tests/end2end/test-admin-perform-wizard.js',
-    'tests/end2end/test-admin-login.js',
-    'tests/end2end/test-admin-configure-node.js',
-    'tests/end2end/test-admin-configure-users.js',
-    'tests/end2end/test-admin-configure-contexts.js',
-    'tests/end2end/test-admin-configure-receivers.js',
-    'tests/end2end/test-receiver-first-login.js',
-    'tests/end2end/test-globaleaks-process.js',
-    'tests/end2end/test-admin-stats.js',
-    'tests/end2end/test-admin-submission-overview.js'
-  ],
+// We shuld run this on chrome and use the console plugin to fail
+// on client side errors and exceptions. But running tests on chrome
+// locally on Travis CI is not simple
+config.capabilities = {
+  'browserName': 'chrome',
+  'chromeOptions': {
+    'args': ['no-sandbox']
+  }
+};
 
-  capabilities: {
-    'browserName': 'chrome',
-    'chromeOptions': {
-      'args': ['no-sandbox']
-    }
-  },
+config.plugins = [{
+  package: 'protractor-console-plugin',
+  logWarnings: true,
+  failOnWarning: false,
+  failOnError: true,
+  exclude: ['favicon.ico', 'glyphicons-halflings-regular']
+}];
 
-  jasmineNodeOpts: {
-    isVerbose: true
-  },
-
-  plugins: [{
-    package: 'protractor-console-plugin',
-    logWarnings: true,
-    failOnWarning: false,
-    failOnError: true,
-    exclude: ['favicon.ico', 'glyphicons-halflings-regular']
-  }],
-
-  // onPrepare: function() {
+  //config.onPrepare: function() {
   //    var SpecReporter = require('jasmine-spec-reporter');
   //    // add jasmine spec reporter
   //    jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
   // }
-};
 
-if (process.env.CHROME_BINARY_PATH) {
-  exports.config.capabilities.chromeOptions.binary = process.env.CHROME_BINARY_PATH;
+exports.config = config;
+
+if (process.env.TRAVIS && process.env.TRAVIS_BUILD_DIR) {
+  exports.config.capabilities.chromeOptions.binary = process.env.TRAVIS_BUILD_DIR + '/chrome-linux/chrome';
 }

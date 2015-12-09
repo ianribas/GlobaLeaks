@@ -135,8 +135,6 @@ install:
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
-  - curl -Lo chrome.zip https://download-chromium.appspot.com/dl/Linux_x64 && unzip chrome.zip
-  - export CHROME_BINARY_PATH=$PWD/chrome-linux/chrome # Define chrome binary path to be used by protractor.
+  - [ "$GLTEST" = "unit" ] && cd $TRAVIS_BUILD_DIR && curl -Lo chrome.zip https://download-chromium.appspot.com/dl/Linux_x64 && unzip chrome.zip
 script:
   - $TRAVIS_BUILD_DIR/scripts/travis.sh
