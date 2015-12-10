@@ -26,11 +26,11 @@ config.plugins = [{
   exclude: ['favicon.ico', 'glyphicons-halflings-regular']
 }];
 
-  //config.onPrepare: function() {
-  //    var SpecReporter = require('jasmine-spec-reporter');
-  //    // add jasmine spec reporter
-  //    jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
-  // }
+config.onPrepare = function() {
+   var SpecReporter = require('jasmine-spec-reporter');
+   // add jasmine spec reporter
+   jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
+}
 
 exports.config = config;
 
